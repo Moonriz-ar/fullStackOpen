@@ -29,11 +29,11 @@ const App = () => {
     );
   };
 
-  const Total = () => {
+  const Total = (props) => {
     return (
       <p>
         Number of exercises{" "}
-        {parts.reduce((sum, item) => sum + item.exercises, 0)}
+        {props.parts.reduce((sum, item) => sum + item.exercises, 0)}
       </p>
     );
   };
@@ -41,10 +41,12 @@ const App = () => {
   return (
     <>
       <Title title={course} />
+
       {parts.map((part) => {
         return <Part name={part.name} exercises={part.exercises} />;
       })}
-      <Total />
+
+      <Total parts={parts} />
     </>
   );
 };
