@@ -1,12 +1,13 @@
 import React from "react";
+import Button from "./Button.js";
 
 function Feedback({ handleClick }) {
   return (
     <>
       <h1>give feedback</h1>
-      <button onClick={handleClick("good")}>good</button>
-      <button onClick={handleClick("neutral")}>neutral</button>
-      <button onClick={handleClick("bad")}>bad</button>
+      <Button handleClick={handleClick} innerText="good" />
+      <Button handleClick={handleClick} innerText="neutral" />
+      <Button handleClick={handleClick} innerText="bad" />
     </>
   );
 }

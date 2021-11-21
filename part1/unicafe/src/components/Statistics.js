@@ -1,7 +1,9 @@
 import React from "react";
+import StatisticLine from "./StatisticLine.js";
 
 function Statistics({ good, neutral, bad }) {
   let sum = good + neutral + bad;
+  let positive = (good / sum) * 100;
 
   let statistics;
   // conditional rendering
@@ -10,11 +12,11 @@ function Statistics({ good, neutral, bad }) {
   } else {
     statistics = (
       <>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <p>all {sum}</p>
-        <p>positive {(good / sum) * 100} %</p>
+        <StatisticLine innerText="good" statistic={good} />
+        <StatisticLine innerText="neutral" statistic={neutral} />
+        <StatisticLine innerText="bad" statistic={bad} />
+        <StatisticLine innerText="all" statistic={sum} />
+        <StatisticLine innerText="positive" statistic={positive} percent="%" />
       </>
     );
   }
