@@ -11,13 +11,19 @@ function Statistics({ good, neutral, bad }) {
     statistics = <p>No Feedback given</p>;
   } else {
     statistics = (
-      <>
-        <StatisticLine innerText="good" statistic={good} />
-        <StatisticLine innerText="neutral" statistic={neutral} />
-        <StatisticLine innerText="bad" statistic={bad} />
-        <StatisticLine innerText="all" statistic={sum} />
-        <StatisticLine innerText="positive" statistic={positive} percent="%" />
-      </>
+      <table>
+        <tbody>
+          <StatisticLine innerText="good" statistic={good} />
+          <StatisticLine innerText="neutral" statistic={neutral} />
+          <StatisticLine innerText="bad" statistic={bad} />
+          <StatisticLine innerText="all" statistic={sum} />
+          <StatisticLine
+            innerText="positive"
+            statistic={positive}
+            percent="%"
+          />
+        </tbody>
+      </table>
     );
   }
 
