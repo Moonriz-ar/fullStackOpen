@@ -16,6 +16,11 @@ const App = () => {
       name: newName,
     };
 
+    if (persons.find((person) => person.name === newContact.name)) {
+      alert(`${newContact.name} is already added to phonebook`);
+      return false;
+    }
+
     setPersons([...persons, newContact]);
     setNewName("");
   };
