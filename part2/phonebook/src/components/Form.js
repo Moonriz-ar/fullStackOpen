@@ -3,7 +3,7 @@ import React from "react";
 function Form({ newName, newPhone, handleChange, handleSubmit }) {
   return (
     <>
-      <h2>Phonebook</h2>
+      <h2>Add a new contact</h2>
       <form onSubmit={handleSubmit}>
         <div>
           name: <input name="name" value={newName} onChange={handleChange} />
