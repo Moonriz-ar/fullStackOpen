@@ -1,12 +1,16 @@
 import React from "react";
 
-function Form({ newName, handleChange, handleSubmit }) {
+function Form({ newName, newPhone, handleChange, handleSubmit }) {
   return (
     <>
       <h2>Phonebook</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          name: <input value={newName} onChange={handleChange} />
+          name: <input name="name" value={newName} onChange={handleChange} />
+        </div>
+        <div>
+          number:{" "}
+          <input name="phone" value={newPhone} onChange={handleChange} />
         </div>
         <div>
           <button type="submit">add</button>
