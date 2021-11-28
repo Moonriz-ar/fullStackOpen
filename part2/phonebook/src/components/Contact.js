@@ -1,10 +1,10 @@
 import React from "react";
 
-function Contact({ name, phone }) {
+function Contact({ name, number }) {
   return (
     <tr>
       <td>{name}</td>
-      <td>{phone}</td>
+      <td>{number}</td>
     </tr>
   );
 }

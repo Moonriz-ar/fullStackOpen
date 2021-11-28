@@ -14,7 +14,7 @@ function Phonebook({ persons, newFilter }) {
   const unfilteredContacts = persons.map((person) => (
     <Contact
       name={person.name}
-      phone={person.phone}
+      number={person.number}
       key={person.id}
       id={person.id}
     />
@@ -23,7 +23,7 @@ function Phonebook({ persons, newFilter }) {
   const filteredContacts = filteredArray.map((person) => (
     <Contact
       name={person.name}
-      phone={person.phone}
+      number={person.number}
       key={person.id}
       id={person.id}
     />

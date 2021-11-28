@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import Filter from "./components/Filter.js";
 import Form from "./components/Form.js";
 import Phonebook from "./components/Phonebook.js";
 
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: "Arto Hellas", phone: "040-123456", id: 1 },
-    { name: "Ada Lovelace", phone: "39-44-5323523", id: 2 },
-    { name: "Dan Abramov", phone: "12-43-234345", id: 3 },
-    { name: "Mary Poppendieck", phone: "39-23-6423122", id: 4 },
-  ]);
-
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newPhone, setNewPhone] = useState("");
   const [newFilter, setFilter] = useState("");
+
+  useEffect(() => {
+    console.log("effect");
+    axios.get("http://localhost:3001/persons").then((response) => {
+      console.log("promise fulfilled");
+      console.log(response.data);
+      setPersons(response.data);
+    });
+  }, []);
 
   const handleChange = (event) => {
     let inputName = event.target.name;
@@ -38,7 +43,7 @@ const App = () => {
     event.preventDefault();
     const newContact = {
       name: newName,
-      phone: newPhone,
+      number: newPhone,
       id: persons.length + 1,
     };
 
