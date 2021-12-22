@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { selectNotificationMessage } from "../reducers/notificationReducer.js";
 
 const Notification = () => {
-  const message = useSelector((state) => state.notification);
+  const message = useSelector(selectNotificationMessage);
   const style = {
     border: "solid",
     padding: 10,

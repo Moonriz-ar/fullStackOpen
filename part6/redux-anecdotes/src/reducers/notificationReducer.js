@@ -14,7 +14,7 @@ const notificationReducer = (state = initialState, action) => {
   }
 };
 
-// action creator
+// action creators
 export const voteNotification = (content) => {
   return {
     type: "notification/vote",
@@ -35,5 +35,8 @@ export const resetNotification = () => {
     type: "notification/reset",
   };
 };
+
+// selectors
+export const selectNotificationMessage = (state) => state.notification;
 
 export default notificationReducer;

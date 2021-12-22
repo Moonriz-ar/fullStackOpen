@@ -1,17 +1,17 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { vote } from "../reducers/anecdoteReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { vote, selectAllFilteredAnecdotes } from "../reducers/anecdoteReducer";
 import {
   voteNotification,
   resetNotification,
 } from "../reducers/notificationReducer";
 
 const AnecdoteList = () => {
-  const anecdotes = useSelector((state) => state.anecdote);
   const dispatch = useDispatch();
+  const filteredRecipes = useSelector(selectAllFilteredAnecdotes);
 
-  const sortedAnecdotes = () => {
-    return anecdotes.slice().sort((a, b) => b.votes - a.votes);
+  const sortedAnecdotes = (array) => {
+    return array.slice().sort((a, b) => b.votes - a.votes);
   };
 
   const buttonHandler = (id, content) => {
@@ -26,7 +26,7 @@ const AnecdoteList = () => {
 
   return (
     <>
-      {sortedAnecdotes().map((anecdote) => (
+      {sortedAnecdotes(filteredRecipes).map((anecdote) => (
         <div key={anecdote.id}>
           <div>{anecdote.content}</div>
           <div>

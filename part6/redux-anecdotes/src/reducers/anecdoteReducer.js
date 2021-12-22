@@ -1,5 +1,6 @@
 import initialState from "../data.js";
 import { v4 as uuidv4 } from "uuid";
+import { selectFilter } from "./filterReducer.js";
 
 // reducer
 const anecdoteReducer = (state = initialState, action) => {
@@ -44,6 +45,18 @@ export const addAnecdote = (event) => {
       votes: 0,
     },
   };
+};
+
+// selectors
+export const selectAllAnecdotes = (state) => state.anecdote;
+
+export const selectAllFilteredAnecdotes = (state) => {
+  const allAnecdotes = selectAllAnecdotes(state);
+  const filter = selectFilter(state);
+
+  return allAnecdotes.filter((anecdote) =>
+    anecdote.content.toLowerCase().includes(filter.toLowerCase())
+  );
 };
 
 export default anecdoteReducer;
