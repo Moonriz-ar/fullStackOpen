@@ -2,12 +2,12 @@ import initialState from "../data.js";
 import { v4 as uuidv4 } from "uuid";
 
 // reducer
-const reducer = (state = initialState, action) => {
+const anecdoteReducer = (state = initialState, action) => {
   console.log("state now: ", state);
   console.log("action", action);
   switch (action.type) {
     // example how to change in inmmutable way item with specific id
-    case "vote/incrementVote":
+    case "anecdote/incrementVote":
       const id = action.id;
       const anecdoteToChange = state.find((anecdote) => anecdote.id === id);
       const changedAnecdote = {
@@ -24,10 +24,11 @@ const reducer = (state = initialState, action) => {
   }
 };
 
+// action creators
 export const vote = (id) => {
   console.log("vote", id);
   return {
-    type: "vote/incrementVote",
+    type: "anecdote/incrementVote",
     id: id,
   };
 };
@@ -46,4 +47,4 @@ export const addAnecdote = (event) => {
   };
 };
 
-export default reducer;
+export default anecdoteReducer;
