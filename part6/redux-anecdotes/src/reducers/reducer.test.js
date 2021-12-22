@@ -36,9 +36,7 @@ describe("anecdote reducer", () => {
     const newState = anecdoteReducer(state, action(2));
 
     expect(newState).toHaveLength(2);
-
     expect(newState).toContainEqual(state[0]);
-
     expect(newState).toContainEqual({
       content: "Adding manpower to a late software project makes it later!",
       id: 2,
