@@ -36,7 +36,6 @@ export const vote = (id) => {
 export const addAnecdote = (event) => {
   const content = event.target.anecdote.value;
   const id = uuidv4();
-  event.target.anecdote.value = "";
   return {
     type: "anecdote/addAnecdote",
     payload: {
