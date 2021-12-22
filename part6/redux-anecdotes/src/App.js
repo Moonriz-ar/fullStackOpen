@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
+import { vote, addAnecdote } from "./reducers/anecdoteReducer";
 
 const App = () => {
   const anecdotes = useSelector((state) => state);
@@ -9,27 +9,13 @@ const App = () => {
   };
   const dispatch = useDispatch();
 
-  const vote = (id) => {
-    console.log("vote", id);
-    dispatch({
-      type: "vote/incrementVote",
-      id: id,
-    });
+  const voteHandler = (id) => {
+    dispatch(vote(id));
   };
 
-  const addAnecdote = (event) => {
+  const addAnecdoteHandler = (event) => {
     event.preventDefault();
-    const content = event.target.anecdote.value;
-    const id = uuidv4();
-    event.target.anecdote.value = "";
-    dispatch({
-      type: "anecdote/addAnecdote",
-      payload: {
-        id,
-        content,
-        votes: 0,
-      },
-    });
+    dispatch(addAnecdote(event));
   };
 
   return (
@@ -40,12 +26,12 @@ const App = () => {
           <div>{anecdote.content}</div>
           <div>
             has {anecdote.votes}
-            <button onClick={() => vote(anecdote.id)}>vote</button>
+            <button onClick={() => voteHandler(anecdote.id)}>vote</button>
           </div>
         </div>
       ))}
       <h2>create new</h2>
-      <form onSubmit={addAnecdote}>
+      <form onSubmit={addAnecdoteHandler}>
         <div>
           <input name="anecdote" />
         </div>
