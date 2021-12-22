@@ -33,8 +33,6 @@ export const vote = (id) => {
 };
 
 export const addAnecdote = (event) => {
-  event.preventDefault();
-  console.log("form clicked");
   const content = event.target.anecdote.value;
   const id = uuidv4();
   event.target.anecdote.value = "";
